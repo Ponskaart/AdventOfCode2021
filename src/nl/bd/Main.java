@@ -13,7 +13,10 @@ public class Main {
 //        Day1Part2.calculation();
 //        Day2.calculation();
 //        Day3.calculation();
-        Day3.calculationPart2Test();
+//        Day3.calculationPart2Test();
+        Day4.calculation();
+
+
 
 
 
