@@ -170,162 +170,180 @@ public class Day4 {
 
     public static void printResultLine (ArrayList <bingoCardLine> lineArray, int j) {
 
-        System.out.println(lineArray.get(j).getNumber1() + " " + lineArray.get(j).getNumber2() + " "
-                + lineArray.get(j).getNumber3() +" "+ lineArray.get(j).getNumber3() +" "
-                + lineArray.get(j).getNumber4());
+        System.out.println("The winning bingo line is: " + lineArray.get(j).getNumber1() + " " + lineArray.get(j).getNumber2() + " "
+                + lineArray.get(j).getNumber3() +" "+ lineArray.get(j).getNumber4() +" "
+                + lineArray.get(j).getNumber5());
     }
 
     public static void printResultColumn (ArrayList <bingoCardColumn> columnArray, int j) {
 
-        System.out.println(columnArray.get(j).getNumber1() + " " + columnArray.get(j).getNumber2() + " "
-                + columnArray.get(j).getNumber3() +" "+ columnArray.get(j).getNumber3() +" "
-                + columnArray.get(j).getNumber4());
+        System.out.println("The winning bingo column is: " + columnArray.get(j).getNumber1() + " " + columnArray.get(j).getNumber2() + " "
+                + columnArray.get(j).getNumber3() +" "+ columnArray.get(j).getNumber4() +" "
+                + columnArray.get(j).getNumber5());
     }
 
-    public static void calculation(){
-        ArrayList <bingoCardLine> lineArray = new ArrayList<bingoCardLine>();
-        ArrayList <bingoCardColumn> columnArray = new ArrayList<bingoCardColumn>();
-        ArrayList <String> numbersToBeDrawn = new ArrayList<>();
-        ArrayList <String> drawnNumbers = new ArrayList<>();
+    public static void calculation() {
+        ArrayList<bingoCardLine> lineArray = new ArrayList<bingoCardLine>();
+        ArrayList<bingoCardColumn> columnArray = new ArrayList<bingoCardColumn>();
+        ArrayList<String> numbersToBeDrawn = new ArrayList<>();
+        ArrayList<String> drawnNumbers = new ArrayList<>();
 
-        filereaderCards (lineArray);
-        filereaderEntries (numbersToBeDrawn);
+        filereaderCards(lineArray);
+        filereaderEntries(numbersToBeDrawn);
         String numbers = "";
 
         int startingPointIndex = 0;
         int endpointIndex = 5;
         int counterLoopsTotal = 0;
 
-        while (counterLoopsTotal < 15){
-                if(counterLoopsTotal == 0 || counterLoopsTotal == 1 || counterLoopsTotal == 2) {
-                    if (counterLoopsTotal == 0) {
-                        startingPointIndex = 0;
-                        endpointIndex = 5;
-                    } else if (counterLoopsTotal == 1){
-                        startingPointIndex = 5;
-                        endpointIndex = 10;
-                    } else if (counterLoopsTotal == 2){
-                        startingPointIndex = 10;
-                        endpointIndex = 15;
-                    }
-                    for (int i = startingPointIndex ; i < endpointIndex; i++) {
-                        numbers = numbers + lineArray.get(i).getNumber1() + (" ");
-                    }
-                    String[] line = numbers.trim().split(" ");
-                    columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
-                    counterLoopsTotal++;
-                    numbers = "";
-
-                } else if (counterLoopsTotal == 3 || counterLoopsTotal == 4 || counterLoopsTotal == 5) {
-                    if (counterLoopsTotal == 3) {
-                        startingPointIndex = 0;
-                        endpointIndex = 5;
-                    } else if (counterLoopsTotal == 4){
-                        startingPointIndex = 5;
-                        endpointIndex = 10;
-                    } else if (counterLoopsTotal == 5){
-                        startingPointIndex = 10;
-                        endpointIndex = 15;
-                    }
-                    for (int i = startingPointIndex ; i < endpointIndex; i++) {
-                        numbers = numbers + lineArray.get(i).getNumber2() + (" ");
-                    }
-                    String[] line = numbers.trim().split(" ");
-                    columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
-                    counterLoopsTotal++;
-                    numbers = "";
-
-                } else if (counterLoopsTotal == 6 || counterLoopsTotal == 7 || counterLoopsTotal == 8) {
-                    if (counterLoopsTotal == 6) {
-                        startingPointIndex = 0;
-                        endpointIndex = 5;
-                    } else if (counterLoopsTotal == 7){
-                        startingPointIndex = 5;
-                        endpointIndex = 10;
-                    } else if (counterLoopsTotal == 8){
-                        startingPointIndex = 10;
-                        endpointIndex = 15;
-                    }
-                    for (int i = startingPointIndex ; i < endpointIndex; i++) {
-                        numbers = numbers + lineArray.get(i).getNumber3() + (" ");
-                    }
-                    String[] line = numbers.trim().split(" ");
-                    columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
-                    counterLoopsTotal++;
-                    numbers = "";
-
-                } else if (counterLoopsTotal == 9 || counterLoopsTotal == 10 || counterLoopsTotal == 11) {
-                    if (counterLoopsTotal == 9) {
-                        startingPointIndex = 0;
-                        endpointIndex = 5;
-                    } else if (counterLoopsTotal == 10){
-                        startingPointIndex = 5;
-                        endpointIndex = 10;
-                    } else if (counterLoopsTotal == 11){
-                        startingPointIndex = 10;
-                        endpointIndex = 15;
-                    }
-                    for (int i = startingPointIndex ; i < endpointIndex; i++) {
-                        numbers = numbers + lineArray.get(i).getNumber4() + (" ");
-                    }
-                    String[] line = numbers.trim().split(" ");
-                    columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
-                    counterLoopsTotal++;
-                    numbers = "";
-
-                } else {
-                    if (counterLoopsTotal == 12) {
-                        startingPointIndex = 0;
-                        endpointIndex = 5;
-                    } else if (counterLoopsTotal == 13){
-                        startingPointIndex = 5;
-                        endpointIndex = 10;
-                    } else if (counterLoopsTotal == 14){
-                        startingPointIndex = 10;
-                        endpointIndex = 15;
-                    }
-                    for (int i = startingPointIndex ; i < endpointIndex; i++) {
-                        numbers = numbers + lineArray.get(i).getNumber5() + (" ");
-                    }
-                    String[] line = numbers.trim().split(" ");
-                    columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
-                    counterLoopsTotal++;
-                    numbers = "";
+        while (counterLoopsTotal < 15) {
+            if (counterLoopsTotal == 0 || counterLoopsTotal == 1 || counterLoopsTotal == 2) {
+                if (counterLoopsTotal == 0) {
+                    startingPointIndex = 0;
+                    endpointIndex = 5;
+                } else if (counterLoopsTotal == 1) {
+                    startingPointIndex = 5;
+                    endpointIndex = 10;
+                } else if (counterLoopsTotal == 2) {
+                    startingPointIndex = 10;
+                    endpointIndex = 15;
                 }
+                for (int i = startingPointIndex; i < endpointIndex; i++) {
+                    numbers = numbers + lineArray.get(i).getNumber1() + (" ");
+                }
+                String[] line = numbers.trim().split(" ");
+                columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
+                counterLoopsTotal++;
+                numbers = "";
+
+            } else if (counterLoopsTotal == 3 || counterLoopsTotal == 4 || counterLoopsTotal == 5) {
+                if (counterLoopsTotal == 3) {
+                    startingPointIndex = 0;
+                    endpointIndex = 5;
+                } else if (counterLoopsTotal == 4) {
+                    startingPointIndex = 5;
+                    endpointIndex = 10;
+                } else if (counterLoopsTotal == 5) {
+                    startingPointIndex = 10;
+                    endpointIndex = 15;
+                }
+                for (int i = startingPointIndex; i < endpointIndex; i++) {
+                    numbers = numbers + lineArray.get(i).getNumber2() + (" ");
+                }
+                String[] line = numbers.trim().split(" ");
+                columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
+                counterLoopsTotal++;
+                numbers = "";
+
+            } else if (counterLoopsTotal == 6 || counterLoopsTotal == 7 || counterLoopsTotal == 8) {
+                if (counterLoopsTotal == 6) {
+                    startingPointIndex = 0;
+                    endpointIndex = 5;
+                } else if (counterLoopsTotal == 7) {
+                    startingPointIndex = 5;
+                    endpointIndex = 10;
+                } else if (counterLoopsTotal == 8) {
+                    startingPointIndex = 10;
+                    endpointIndex = 15;
+                }
+                for (int i = startingPointIndex; i < endpointIndex; i++) {
+                    numbers = numbers + lineArray.get(i).getNumber3() + (" ");
+                }
+                String[] line = numbers.trim().split(" ");
+                columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
+                counterLoopsTotal++;
+                numbers = "";
+
+            } else if (counterLoopsTotal == 9 || counterLoopsTotal == 10 || counterLoopsTotal == 11) {
+                if (counterLoopsTotal == 9) {
+                    startingPointIndex = 0;
+                    endpointIndex = 5;
+                } else if (counterLoopsTotal == 10) {
+                    startingPointIndex = 5;
+                    endpointIndex = 10;
+                } else if (counterLoopsTotal == 11) {
+                    startingPointIndex = 10;
+                    endpointIndex = 15;
+                }
+                for (int i = startingPointIndex; i < endpointIndex; i++) {
+                    numbers = numbers + lineArray.get(i).getNumber4() + (" ");
+                }
+                String[] line = numbers.trim().split(" ");
+                columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
+                counterLoopsTotal++;
+                numbers = "";
+
+            } else {
+                if (counterLoopsTotal == 12) {
+                    startingPointIndex = 0;
+                    endpointIndex = 5;
+                } else if (counterLoopsTotal == 13) {
+                    startingPointIndex = 5;
+                    endpointIndex = 10;
+                } else if (counterLoopsTotal == 14) {
+                    startingPointIndex = 10;
+                    endpointIndex = 15;
+                }
+                for (int i = startingPointIndex; i < endpointIndex; i++) {
+                    numbers = numbers + lineArray.get(i).getNumber5() + (" ");
+                }
+                String[] line = numbers.trim().split(" ");
+                columnArray.add(new bingoCardColumn(line[0], line[1], line[2], line[3], line[4]));
+                counterLoopsTotal++;
+                numbers = "";
+            }
         }
 
-//        for (bingoCardColumn bingoCardColumn : columnArray) {
-//            System.out.println(bingoCardColumn.getNumber1() + ", " + bingoCardColumn.getNumber2() + ", "
-//                    + bingoCardColumn.getNumber3() + ", " + bingoCardColumn.getNumber4() + ", "
-//                    + bingoCardColumn.getNumber5());
-//        }
+        boolean proceed = true;
+        int result = 0;
 
-        boolean result = false;
+        while (proceed) {
 
-        while(result = false) {
             for (int i = 0; i < numbersToBeDrawn.size(); i++) {
                 String drawnNumber = numbersToBeDrawn.get(i);
                 drawnNumbers.add(drawnNumber);
 
-                for (int j = 0; j < lineArray.size(); j++){
+                System.out.println(drawnNumber);
+
+                for (int j = 0; j < lineArray.size(); j++) {
                     if (drawnNumbers.contains(lineArray.get(j).getNumber1())
                             && drawnNumbers.contains(lineArray.get(j).getNumber2())
                             && drawnNumbers.contains(lineArray.get(j).getNumber3())
                             && drawnNumbers.contains(lineArray.get(j).getNumber4())
                             && drawnNumbers.contains(lineArray.get(j).getNumber5())) {
+
+                        result = (Integer.parseInt(lineArray.get(j).getNumber1()) + Integer.parseInt(lineArray.get(j).getNumber2()) +
+                                Integer.parseInt(lineArray.get(j).getNumber3()) + Integer.parseInt(lineArray.get(j).getNumber4())
+                                + Integer.parseInt(lineArray.get(j).getNumber5())) * Integer.parseInt(numbersToBeDrawn.get(i));
+
                         printResultLine(lineArray, j);
-                        result = true;
+                        System.out.println(result);
+                        proceed = false;
+                        if (proceed == false) {
+                            break;
+                        }
+                        
                     } else if (drawnNumbers.contains(columnArray.get(j).getNumber1())
                             && drawnNumbers.contains(columnArray.get(j).getNumber2())
                             && drawnNumbers.contains(columnArray.get(j).getNumber3())
                             && drawnNumbers.contains(columnArray.get(j).getNumber4())
                             && drawnNumbers.contains(columnArray.get(j).getNumber5())) {
-                        System.out.println(columnArray.get(j));
+
+                        result = (Integer.parseInt(columnArray.get(j).getNumber1()) + Integer.parseInt(columnArray.get(j).getNumber2()) +
+                                Integer.parseInt(columnArray.get(j).getNumber3()) + Integer.parseInt(columnArray.get(j).getNumber4())
+                                + Integer.parseInt(columnArray.get(j).getNumber5())) * Integer.parseInt(numbersToBeDrawn.get(i));
+
                         printResultColumn(columnArray, j);
-                        result = true;
-                    } else {
-                        System.out.println("no match found");
+                        System.out.println(result);
+                        proceed = false;
+
+                        if (proceed == false) {
+                            break;
+                        }
                     }
+                }
+                if (proceed == false) {
+                    break;
                 }
             }
         }
