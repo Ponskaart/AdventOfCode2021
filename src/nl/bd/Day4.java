@@ -19,21 +19,21 @@ public class Day4 {
                 lineNumbers.add(lineText);
             }
 
-            for (int totalCards = 0; totalCards < 3; totalCards++) {
+            int totalCards = 3;
+
+            for (int cardInstance = 0; cardInstance < totalCards; cardInstance++) {
                 int[][] bingoCard = new int[5][5];
 
                 for (int i = 0; i < 5; i++) {
-                    String[] lineNumber = lineNumbers.get(i+(5*totalCards)).trim().split("\\s+");
+                    String[] lineNumber = lineNumbers.get(i+(5*cardInstance)).trim().split("\\s+");
 
                     for (int j = 0; j < 5; j++) {
 
                         bingoCard[i][j] = Integer.parseInt(lineNumber[j]);
                     }
                 }
-
                 bingoCardArray.add(bingoCard);
             }
-
             fileReader.close();
         } catch (IOException e) {
             System.out.println("File Read Error");
@@ -71,10 +71,14 @@ public class Day4 {
                 {
                     for(int k = 0; k<5; k++)
                     {
+                        if(drawnNumbers.contains(bingoCardArray.get(i)[j][k])){
+
+                    }
                         System.out.print(bingoCardArray.get(i)[j][k] + ",");
                     }
-                    System.out.println("");
+                    System.out.println(" ");
                 }
+                System.out.println(" ");
             }
 
 
