@@ -126,6 +126,122 @@ public class Day4 {
         }
     }
 
+    public static class fullCardLine{
+
+        private bingoCardLine line1;
+        private bingoCardLine line2;
+        private bingoCardLine line3;
+        private bingoCardLine line4;
+        private bingoCardLine line5;
+
+        fullCardLine(bingoCardLine line1, bingoCardLine line2, bingoCardLine line3, bingoCardLine line4,
+                     bingoCardLine line5){
+            this.line1 = line1;
+            this.line2 = line2;
+            this.line3 = line3;
+            this.line4 = line4;
+            this.line5 = line5;
+        }
+
+        public bingoCardLine getLine1() {
+            return line1;
+        }
+
+        public void setLine1(bingoCardLine line1) {
+            this.line1 = line1;
+        }
+
+        public bingoCardLine getLine2() {
+            return line2;
+        }
+
+        public void setLine2(bingoCardLine line2) {
+            this.line2 = line2;
+        }
+
+        public bingoCardLine getLine3() {
+            return line3;
+        }
+
+        public void setLine3(bingoCardLine line3) {
+            this.line3 = line3;
+        }
+
+        public bingoCardLine getLine4() {
+            return line4;
+        }
+
+        public void setLine4(bingoCardLine line4) {
+            this.line4 = line4;
+        }
+
+        public bingoCardLine getLine5() {
+            return line5;
+        }
+
+        public void setLine5(bingoCardLine line5) {
+            this.line5 = line5;
+        }
+    }
+
+    public static class fullCardColumn{
+
+        private bingoCardColumn line1;
+        private bingoCardColumn line2;
+        private bingoCardColumn line3;
+        private bingoCardColumn line4;
+        private bingoCardColumn line5;
+
+        fullCardColumn(bingoCardColumn line1, bingoCardColumn line2, bingoCardColumn line3, bingoCardColumn line4,
+                       bingoCardColumn line5){
+            this.line1 = line1;
+            this.line2 = line2;
+            this.line3 = line3;
+            this.line4 = line4;
+            this.line5 = line5;
+        }
+
+        public bingoCardColumn getLine1() {
+            return line1;
+        }
+
+        public void setLine1(bingoCardColumn line1) {
+            this.line1 = line1;
+        }
+
+        public bingoCardColumn getLine2() {
+            return line2;
+        }
+
+        public void setLine2(bingoCardColumn line2) {
+            this.line2 = line2;
+        }
+
+        public bingoCardColumn getLine3() {
+            return line3;
+        }
+
+        public void setLine3(bingoCardColumn line3) {
+            this.line3 = line3;
+        }
+
+        public bingoCardColumn getLine4() {
+            return line4;
+        }
+
+        public void setLine4(bingoCardColumn line4) {
+            this.line4 = line4;
+        }
+
+        public bingoCardColumn getLine5() {
+            return line5;
+        }
+
+        public void setLine5(bingoCardColumn line5) {
+            this.line5 = line5;
+        }
+    }
+
     public static void filereaderCards (ArrayList<bingoCardLine> lineArray) {
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader("inputDay4CardsTest.txt"));
@@ -187,6 +303,8 @@ public class Day4 {
         ArrayList<bingoCardColumn> columnArray = new ArrayList<bingoCardColumn>();
         ArrayList<String> numbersToBeDrawn = new ArrayList<>();
         ArrayList<String> drawnNumbers = new ArrayList<>();
+        ArrayList<fullCardLine> fullCardLine = new ArrayList<fullCardLine>();
+        ArrayList<fullCardColumn> fullCardColumn = new ArrayList<fullCardColumn>();
 
         filereaderCards(lineArray);
         filereaderEntries(numbersToBeDrawn);
@@ -194,6 +312,9 @@ public class Day4 {
 
         int startingPointIndex = 0;
         int endpointIndex = 5;
+
+        startingPointIndex = 0;
+        endpointIndex = 5;
         int counterLoopsTotal = 0;
 
         while (counterLoopsTotal < 15) {
@@ -294,6 +415,39 @@ public class Day4 {
             }
         }
 
+        counterLoopsTotal = 0;
+
+        while (counterLoopsTotal < 3){
+            if (counterLoopsTotal == 0){
+                int i = 0;
+                fullCardLine.add(new fullCardLine(lineArray.get(i),lineArray.get(i + 1),lineArray.get(i + 2),lineArray.get(i + 3),lineArray.get(i + 4)));
+            } else if(counterLoopsTotal == 1){
+                int i = 5;
+                fullCardLine.add(new fullCardLine(lineArray.get(i),lineArray.get(i + 1),lineArray.get(i + 2),lineArray.get(i + 3),lineArray.get(i + 4)));
+            } else if (counterLoopsTotal == 2){
+
+                int i = 10;
+                fullCardLine.add(new fullCardLine(lineArray.get(i),lineArray.get(i + 1),lineArray.get(i + 2),lineArray.get(i + 3),lineArray.get(i + 4)));
+            }
+            counterLoopsTotal++;
+        }
+
+        counterLoopsTotal = 0;
+
+        while (counterLoopsTotal < 3){
+            if (counterLoopsTotal == 0){
+                int i = 0;
+                fullCardColumn.add(new fullCardColumn(columnArray.get(i),columnArray.get(i + 1),columnArray.get(i + 2),columnArray.get(i + 3),columnArray.get(i + 4)));
+            } else if(counterLoopsTotal == 1){
+                int i = 5;
+                fullCardColumn.add(new fullCardColumn(columnArray.get(i),columnArray.get(i + 1),columnArray.get(i + 2),columnArray.get(i + 3),columnArray.get(i + 4)));
+            } else if (counterLoopsTotal == 2){
+                int i = 10;
+                fullCardColumn.add(new fullCardColumn(columnArray.get(i),columnArray.get(i + 1),columnArray.get(i + 2),columnArray.get(i + 3),columnArray.get(i + 4)));
+            }
+            counterLoopsTotal++;
+        }
+
         boolean proceed = true;
         int result = 0;
 
@@ -312,6 +466,27 @@ public class Day4 {
                             && drawnNumbers.contains(lineArray.get(j).getNumber4())
                             && drawnNumbers.contains(lineArray.get(j).getNumber5())) {
 
+                        bingoCardLine winningLine = new bingoCardLine(lineArray.get(j).getNumber1(),
+                                lineArray.get(j).getNumber2(), lineArray.get(j).getNumber3(),
+                                lineArray.get(j).getNumber4(), lineArray.get(j).getNumber5());
+
+
+                        for (int k = 0; k < fullCardLine.size(); k++) {
+                            if(fullCardLine.contains(winningLine)){
+                                fullCardLine.get(k).getLine1().getNumber1();
+
+
+                                
+                                /*METHODE VOOR HET BEREKENEN VAN TOTAALSOM REGELS - NUMMERS WINNENDE REGEL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                *
+                                * GEILE GRAF INKTVIS*/
+
+
+
+                            }
+
+                        }
+
                         result = (Integer.parseInt(lineArray.get(j).getNumber1()) + Integer.parseInt(lineArray.get(j).getNumber2()) +
                                 Integer.parseInt(lineArray.get(j).getNumber3()) + Integer.parseInt(lineArray.get(j).getNumber4())
                                 + Integer.parseInt(lineArray.get(j).getNumber5())) * Integer.parseInt(numbersToBeDrawn.get(i));
@@ -322,7 +497,7 @@ public class Day4 {
                         if (proceed == false) {
                             break;
                         }
-                        
+
                     } else if (drawnNumbers.contains(columnArray.get(j).getNumber1())
                             && drawnNumbers.contains(columnArray.get(j).getNumber2())
                             && drawnNumbers.contains(columnArray.get(j).getNumber3())
